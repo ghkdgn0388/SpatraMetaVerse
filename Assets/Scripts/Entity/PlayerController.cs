@@ -34,4 +34,10 @@ public class PlayerController : BaseController
             lookDirection = lookDirection.normalized;
         }
     }
+
+    public override void Death()
+    {
+        base.Death();
+        gameManager.GameOver();
+    }
 }
