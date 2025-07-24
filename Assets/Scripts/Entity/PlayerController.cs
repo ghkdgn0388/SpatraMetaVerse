@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
-    private Camera camera;
+    private new Camera camera;
 
     protected override void Start()
     {
@@ -17,6 +17,8 @@ public class PlayerController : BaseController
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         movementDirection = new Vector2(horizontal, vertical).normalized;
+
+        isAttacking = Input.GetMouseButton(0);
 
         Vector2 mousePosition = Input.mousePosition;
         Vector2 worldPos = camera.ScreenToWorldPoint(mousePosition);
