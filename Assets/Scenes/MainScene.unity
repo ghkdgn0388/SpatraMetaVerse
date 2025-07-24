@@ -3175,6 +3175,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3256,6 +3257,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1edb931e101e3940a3027ef327e4965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 2068045820}
 --- !u!1 &855478637
 GameObject:
   m_ObjectHideFlags: 0
@@ -3288,6 +3302,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 7060031988417148645, guid: 81dfa3234b0e37d47a0bb3457e581df4, type: 3}
   - {fileID: 2958387797972202184, guid: 9112ce0127b2b61438d8b193495d87d9, type: 3}
+  - {fileID: 7060031988417148645, guid: ae33dae44c8c8184ba67d77d8f717b31, type: 3}
   spawnAreas:
   - serializedVersion: 2
     x: 5
