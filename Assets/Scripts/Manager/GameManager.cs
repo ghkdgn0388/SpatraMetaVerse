@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject triggerObject;
 
+    public GameObject barrierWall;
+
     private int maxWaveRecord = 0; // 최고 기록
 
     private void Awake()
@@ -34,12 +36,17 @@ public class GameManager : MonoBehaviour
         enemyManager.Init(this);
 
         maxWaveRecord = PlayerPrefs.GetInt("BestWaveRecord", 0);
-        uiManager.ChangeScore(currentWaveIndex, maxWaveRecord);
+        
+
+        if (maxWaveRecord >= 1 && barrierWall != null)
+        {
+            barrierWall.SetActive(false);
+        }
     }
 
     private void Start()
     {
-
+        uiManager.ChangeScore(currentWaveIndex, maxWaveRecord);
     }
 
 
@@ -60,6 +67,11 @@ public class GameManager : MonoBehaviour
             maxWaveRecord = currentWaveIndex;
             PlayerPrefs.SetInt("BestWaveRecord", maxWaveRecord); // 저장 추가
             PlayerPrefs.Save();  // 저장 확실히 하기 위해 호출
+
+            if (maxWaveRecord >= 20 && barrierWall != null)
+            {
+                barrierWall.SetActive(false);
+            }
         }
 
         uiManager.ChangeWave(currentWaveIndex);

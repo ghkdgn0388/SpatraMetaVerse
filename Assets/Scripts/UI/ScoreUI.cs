@@ -12,7 +12,7 @@ public class ScoreUI : MonoBehaviour
 
     public void UpdateScore(int currentWave, int bestWave)
     {
-        scoreText.text = $"Best: {bestWave}";
+        scoreText.text = $"Wave : {currentWave} / Best: {bestWave}";
     }
 
     public void SetActive(bool isActive)
