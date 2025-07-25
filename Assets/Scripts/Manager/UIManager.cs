@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public enum UIState
 {
@@ -15,6 +16,7 @@ public class UIManager : MonoBehaviour
     HomeUI homeUI;
     GameUI gameUI;
     GameOverUI gameOverUI;
+    ScoreUI scoreUI;
     private UIState currentState;
 
     private void Awake()
@@ -25,6 +27,8 @@ public class UIManager : MonoBehaviour
         gameUI.Init(this);
         gameOverUI = GetComponentInChildren<GameOverUI>(true);
         gameOverUI.Init(this);
+        scoreUI = GetComponentInChildren<ScoreUI>(true); // Ãß°¡
+        scoreUI.Init();
 
         //ChangeState(UIState.Home);
     }
@@ -42,6 +46,10 @@ public class UIManager : MonoBehaviour
     public void ChangeWave(int waveIndex)
     {
         gameUI.UpdateWaveText(waveIndex);
+    }
+    public void ChangeScore(int currentWave, int bestWave)
+    {
+        scoreUI.UpdateScore(currentWave, bestWave);
     }
 
     public void ChangePlayerHP(float currentHP, float maxHP)

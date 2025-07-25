@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     private UIManager uiManager;
     public static bool isFirstLoading = true;
 
+    public GameObject triggerObject;
+
+    private int maxWaveRecord = 0; // 최고 기록
+
     private void Awake()
     {
         instance = this;
@@ -28,22 +32,21 @@ public class GameManager : MonoBehaviour
 
         enemyManager = GetComponentInChildren<EnemyManager>();
         enemyManager.Init(this);
+
+        maxWaveRecord = PlayerPrefs.GetInt("BestWaveRecord", 0);
+        uiManager.ChangeScore(currentWaveIndex, maxWaveRecord);
     }
 
     private void Start()
     {
-        if (!isFirstLoading)
-        {
-            //StartGame();
-        }
-        else
-        {
-            //isFirstLoading = false;
-        }
+
     }
+
 
     public void StartGame()
     {
+        currentWaveIndex = 0;
+        triggerObject.SetActive(false);
         uiManager.SetPlayGame();
         StartNextWave();
     }
@@ -51,7 +54,17 @@ public class GameManager : MonoBehaviour
     void StartNextWave()
     {
         currentWaveIndex += 1;
+
+        if (currentWaveIndex > maxWaveRecord)
+        {
+            maxWaveRecord = currentWaveIndex;
+            PlayerPrefs.SetInt("BestWaveRecord", maxWaveRecord); // 저장 추가
+            PlayerPrefs.Save();  // 저장 확실히 하기 위해 호출
+        }
+
         uiManager.ChangeWave(currentWaveIndex);
+        uiManager.ChangeScore(currentWaveIndex, maxWaveRecord); // ScoreUI 사용
+
         enemyManager.StartWave(1 + currentWaveIndex / 5);
     }
 
@@ -64,6 +77,7 @@ public class GameManager : MonoBehaviour
     {
         enemyManager.StopWave();
         uiManager.SetGameOver();
+        triggerObject.SetActive(true);
     }
 
 }
