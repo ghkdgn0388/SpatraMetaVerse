@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         enemyManager.StopWave();
+        uiManager.SetGameOver();
     }
 
 }
