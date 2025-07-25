@@ -22,7 +22,7 @@ public class HomeUI : BaseUI
 
     public void OnClickExitButton()
     {
-        Application.Quit();
+        // Application.Quit();
     }
 
     protected override UIState GetUIState()

@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
         gameOverUI = GetComponentInChildren<GameOverUI>(true);
         gameOverUI.Init(this);
 
-        ChangeState(UIState.Home);
+        //ChangeState(UIState.Home);
     }
 
     public void SetPlayGame()
