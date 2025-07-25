@@ -132,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 7244244825493440036}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4859656, y: -0.17806888, z: -0.0051460676}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -155,7 +155,7 @@ MonoBehaviour:
   weaponSize: 0.8
   power: 1
   speed: 1
-  attackRange: 1.2
+  attackRange: 2
   target:
     serializedVersion: 2
     m_Bits: 64
