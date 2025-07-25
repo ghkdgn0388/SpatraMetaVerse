@@ -14,6 +14,8 @@ public class Obstacle : MonoBehaviour
     public Transform topObject;
     public Transform bottomObject;
 
+    FlappyManager flappyManager;
+
     public float widthPadding = 4f;
 
     public Vector3 SetRandomPlace(Vector3 lastPosition, int obstacleCount)
@@ -31,4 +33,10 @@ public class Obstacle : MonoBehaviour
         return placePosition;
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        FlappyPlayer player = other.GetComponent<FlappyPlayer>();
+        if (player != null)
+            flappyManager.AddScore(1);
+    }
 }

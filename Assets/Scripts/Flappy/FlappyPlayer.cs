@@ -16,8 +16,11 @@ public class FlappyPlayer : MonoBehaviour
 
     public bool godMode = false;
 
+    FlappyManager flappyManager = null;
+
     void Start()
     {
+        flappyManager = FlappyManager.Instance;
         animator = transform.GetComponentInChildren<Animator>();
         _rigidbody = transform.GetComponent<Rigidbody2D>();
 
@@ -40,7 +43,11 @@ public class FlappyPlayer : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
                 {
-                    // 게임 재시작
+                    flappyManager.RestartGame();
+                }
+                else if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    flappyManager.ReturnGame();
                 }
             }
             else
@@ -88,5 +95,6 @@ public class FlappyPlayer : MonoBehaviour
         animator.SetInteger("IsDie", 1);
         isDead = true;
         deathCooldown = 1f;
+        flappyManager.GameOver();
     }
 }
