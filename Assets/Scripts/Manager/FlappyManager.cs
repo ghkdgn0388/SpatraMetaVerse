@@ -7,8 +7,14 @@ using UnityEngine.SceneManagement;
 public class FlappyManager : MonoBehaviour
 {
     static FlappyManager flappyManager;
+    FlappyUIManager flappyUIManager;
     [SerializeField] private string sceneToLoad = "MainScene";
 
+
+    public FlappyUIManager FlappyUIManager
+    {
+        get { return flappyUIManager; }
+    }
     public static FlappyManager Instance
     {
         get { return flappyManager; }
@@ -19,11 +25,18 @@ public class FlappyManager : MonoBehaviour
     private void Awake()
     {
         flappyManager = this;
+        flappyUIManager = FindAnyObjectByType<FlappyUIManager>();
+    }
+
+    private void Start()
+    {
+        flappyUIManager.UpdateScore(0);
     }
 
     public void GameOver()
     {
         Debug.Log("Game Over");
+        flappyUIManager.SetRestart();
     }
 
     public void RestartGame()
@@ -38,7 +51,7 @@ public class FlappyManager : MonoBehaviour
     public void AddScore(int score)
     {
         currentScore += score;
-
+        flappyUIManager.UpdateScore(currentScore);
         Debug.Log("Score: " + currentScore);
     }
 }

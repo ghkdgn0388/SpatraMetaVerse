@@ -21,9 +21,9 @@ public class BgLooper : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered: " + collision.name);
+        //Debug.Log("Triggerd: " + collision.name);
 
         if (collision.CompareTag("BackGround"))
         {
@@ -36,6 +36,7 @@ public class BgLooper : MonoBehaviour
         }
 
         Obstacle obstacle = collision.GetComponent<Obstacle>();
+
         if (obstacle)
         {
             obstacleLastPosition = obstacle.SetRandomPlace(obstacleLastPosition, obstacleCount);
