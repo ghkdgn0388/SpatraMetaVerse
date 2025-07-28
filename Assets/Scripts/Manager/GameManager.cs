@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         maxWaveRecord = PlayerPrefs.GetInt("BestWaveRecord", 0);
         
 
-        if (maxWaveRecord >= 1 && barrierWall != null)
+        if (maxWaveRecord >= 20 && barrierWall != null)
         {
             barrierWall.SetActive(false);
         }
